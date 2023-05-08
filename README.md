@@ -29,14 +29,14 @@ Things you may want to cover:
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| ニックネーム         | string | null: false |
-| メールアドレス       | string | null: false |
-| パスワード           | string | null: false |
-| 姓                 | string | null: false |
-| 名                 | string | null: false |
-| 姓 (フリガナ)       | string | null: false |
-| 名 (フリガナ)       | string | null: false |
-| 生年月日            | string | null: false |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| last_name          | string | null: false |
+| first_name ()      | string | null: false |
+| last_name ()       | string | null: false |
+| date of birth      | string | null: false |
 
 
 ### Association
@@ -50,15 +50,15 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| ユーザー             | string    | null: false, foreign_key: true|
-| カテゴリー           | text    | null: false |
-| 商品名              | string  | null: false |
-| 商品説明             | text    | null: false |
-| 商品の状態           | text    | null: false |
-| 商品価格             | integer | null: false |
-| 配送料の負担         | string   | null: false |
-| 発送元の地域         | text     | null: false |
-| 発送までの日数        | integer | null: false |
+| user               | string    | null: false, foreign_key: true|
+| category           | text    | null: false |
+| item_name          | string  | null: false |
+| item_explanation   | text    | null: false |
+| item_situation     | text    | null: false |
+| item_price         | integer | null: false |
+| Shipping charges   | string   | null: false |
+| Shipping origin region         | text     | null: false |
+| Days to delivery   | integer | null: false |
 
 
 
@@ -73,11 +73,11 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| ニックネーム         | string  | null: false, foreign_key: true |
+| nickname           | string  | null: false, foreign_key: true |
 | email              | string  | null: false, foreign_key: true|
-| 商品名              | string  | null: false, foreign_key: true |
-| 商品説明             | text    | null: false, foreign_key: true |
-| 価格                | integer | null: false, foreign_key: true |
+| item_name          | string  | null: false, foreign_key: true |
+| item_explanation   | text    | null: false, foreign_key: true |
+| item_price         | integer | null: false, foreign_key: true |
 
 
 ### Association
@@ -91,15 +91,15 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| ニックネーム         | string  | null: false, foreign_key: true |
+| nickname           | string  | null: false, foreign_key: true |
 | email              | string  | null: false, foreign_key: true |
-| 購入履歴             | string  | null: false, foreign_key: true |
-| 郵便番号             | strin  | null: false |
-| 都道府県             | string | null: false |
-| 市区町村             | string   | null: false |
-| 番地                | string  | null: false |
-| 建物名              | string  |  null: false |
-| 電話番号             | integer | null: false |
+| Purchase history   | string  | null: false, foreign_key: true |
+| post code          | strin  | null: false |
+| prefectures        | string | null: false |
+| municipalities     | string   | null: false |
+| address            | string  | null: false |
+| Building name      | string  |  null: false |
+| telephone number   | integer | null: false |
 
 
 ### Association
