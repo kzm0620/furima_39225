@@ -42,7 +42,7 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :purchases
-- has_one  :sends 
+- has_one  :sends
 
 
 
@@ -65,7 +65,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :users 
-- has_one  :purchases
+- has_one  :purchase
 
 
 
@@ -78,8 +78,8 @@ Things you may want to cover:
 
 
 ### Association
-- belong_to :users
-- belong_to :items
+- belong_to :user
+- belong_to :item
 - has_one   :sends 
 
 
@@ -100,5 +100,4 @@ Things you may want to cover:
 
 
 ### Association
-- belong_to :users
-- belong_to :purchases
+- belong_to :purchase
