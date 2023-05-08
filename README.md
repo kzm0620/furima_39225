@@ -27,16 +27,16 @@ Things you may want to cover:
 
 ## users テーブル (商品情報)
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| first_name         | string | null: false |
-| last_name          | string | null: false |
-| first_name ()      | string | null: false |
-| last_name ()       | string | null: false |
-| date of birth      | string | null: false |
+| Column             | Type   | Options      |
+| ------------------ | ------ | ------------ |
+| nickname           | string | null: false  |
+| email              | string | unique: true |
+| encrypted_password | string | null: false  |
+| first_name         | string | null: false  |
+| last_name          | string | null: false  |
+| first_name (kana)  | string | null: false  |
+| last_name (kana)   | string | null: false  |
+| date               | string | null: false  |
 
 
 ### Association
@@ -48,17 +48,17 @@ Things you may want to cover:
 
 ## items テーブル (商品情報)
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| user               | string    | null: false, foreign_key: true|
-| category           | text    | null: false |
-| item_name          | string  | null: false |
-| item_explanation   | text    | null: false |
-| item_situation     | text    | null: false |
-| item_price         | integer | null: false |
-| Shipping charges   | string   | null: false |
-| Shipping origin region         | text     | null: false |
-| Days to delivery   | integer | null: false |
+| Column                 | Type      | Options     |
+| ---------------------- | --------- | ----------- |
+| user                   | reference | null: false, foreign_key: true|
+| category_id            | integer   | null: false |
+| item_name              | string    | null: false |
+| item_explanation       | text      | null: false |
+| item_situation         | text      | null: false |
+| item_price             | integer   | null: false |
+| shipping_charges       | string    | null: false |
+| shipping_origin region | text      | null: false |
+| days_to_delivery       | integer   | null: false |
 
 
 
@@ -73,11 +73,8 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| nickname           | string  | null: false, foreign_key: true |
-| email              | string  | null: false, foreign_key: true|
-| item_name          | string  | null: false, foreign_key: true |
-| item_explanation   | text    | null: false, foreign_key: true |
-| item_price         | integer | null: false, foreign_key: true |
+| email              | string  | unique: true, foreign_key: true|
+
 
 
 ### Association
@@ -91,15 +88,15 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| nickname           | string  | null: false, foreign_key: true |
-| email              | string  | null: false, foreign_key: true |
-| Purchase history   | string  | null: false, foreign_key: true |
-| post code          | strin  | null: false |
-| prefectures        | string | null: false |
-| municipalities     | string   | null: false |
-| address            | string  | null: false |
-| Building name      | string  |  null: false |
-| telephone number   | integer | null: false |
+| nickname           | string  | references , foreign_key: true |
+| email              | string  | unique: true, foreign_key: true |
+| purchase_history   | string  | references , foreign_key: true |
+| post_code          | string  | null: false |
+| prefectures_id     | integer | null: false |
+| municipalities     | string
+| address            | string
+| building_name      | string
+| telephone_number   | string  | null: false |
 
 
 ### Association
