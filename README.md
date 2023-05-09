@@ -27,22 +27,21 @@ Things you may want to cover:
 
 ## users テーブル (商品情報)
 
-| Column             | Type   | Options      |
-| ------------------ | ------ | ------------ |
-| nickname           | string | null: false  |
-| email              | string | unique: true |
-| encrypted_password | string | null: false  |
-| first_name         | string | null: false  |
-| last_name          | string | null: false  |
-| first_name (kana)  | string | null: false  |
-| last_name (kana)   | string | null: false  |
-| date               | string | null: false  |
+| Column             | Type     | Options      |
+| ------------------ | -------- | ------------ |
+| nickname           | string   | null: false  |
+| email              | string   | null: false, unique: true |
+| encrypted_password | string   | null: false  |
+| first_name         | string   | null: false  |
+| last_name          | string   | null: false  |
+| first_name_kana    | string   | null: false  |
+| last_name_kana     | string   | null: false  |
+| date               | datetime | null: false  |
 
 
 ### Association
 - has_many :items
 - has_many :purchases
-- has_one  :send
 
 
 
@@ -71,15 +70,17 @@ Things you may want to cover:
 
 ## purchases テーブル (購入履歴)
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| email              | string  | unique: true, foreign_key: true|
+| Column             | Type      | Options     |
+| ------------------ | --------- | ----------- |
+| item_information   | reference | unique: true, user, foreign_key: true|
+
+
 
 
 
 ### Association
-- belong_to :user
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
 - has_one   :send
 
 
@@ -88,16 +89,14 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| nickname           | string  | references , foreign_key: true |
-| email              | string  | unique: true, foreign_key: true |
-| purchase_history   | string  | references , foreign_key: true |
+| purchase_history   | string  | purchases, foreign_key: true |
 | post_code          | string  | null: false |
-| prefectures_id     | integer | null: false |
-| municipalities     | string
-| address            | string
-| building_name      | string
+| prefectures_id     | integer |
+| municipalities     | string  |
+| address            | string  |
+| building_name      | string  |
 | telephone_number   | string  | null: false |
 
 
 ### Association
-- belong_to :purchase
+- belongs_to :purchase
