@@ -81,21 +81,21 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one   :send_shippings
+- has_one   :send_shipping
 
 
 
 ## send_shippings テーブル (発送先情報)
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| purchases          | string  | null: false, foreign_key: true |
-| post_code          | string  | null: false |
-| prefecture_id      | integer | null: false |
-| municipalities     | string  | null: false |
-| address            | string  | null: false |
-| building_name      | string  |
-| telephone_number   | string  | null: false |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| purchase           | references | null: false, foreign_key: true |
+| post_code          | string     | null: false |
+| prefecture_id      | integer    | null: false |
+| municipalities     | string     | null: false |
+| address            | string     | null: false |
+| building_name      | string     |
+| telephone_number   | string     | null: false |
 
 
 ### Association
