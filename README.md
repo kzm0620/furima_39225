@@ -47,23 +47,23 @@ Things you may want to cover:
 
 ## item テーブル (商品情報)
 
-| Column                 | Type      | Options     |
-| ---------------------- | --------- | ----------- |
-| user                   | reference | null: false, foreign_key: true|
-| category_id            | integer   | null: false |
-| item_name              | string    | null: false |
-| item_explanation       | text      | null: false |
-| item_situation         | text      | null: false |
-| item_price             | integer   | null: false |
-| shipping_charges       | string    | null: false |
-| shipping_origin region | text      | null: false |
-| days_to_delivery       | integer   | null: false |
+| Column                    | Type      | Options     |
+| ------------------------- | --------- | ----------- |
+| user                      | reference | null: false, foreign_key: true|
+| category_id               | integer   | null: false |
+| item_name                 | string    | null: false |
+| item_explanation          | text      | null: false |
+| item_situation_id         | integer   | null: false |
+| item_price                | integer   | null: false |
+| shipping_charges_id       | integer   | null: false |
+| shipping_origin_id        | integer   | null: false |
+| days_to_delivery_id       | integer   | null: false |
 
 
 
 
 ### Association
-- belongs_to :users 
+- belongs_to :user
 - has_one    :purchase
 
 
@@ -72,8 +72,8 @@ Things you may want to cover:
 
 | Column             | Type      | Options     |
 | ------------------ | --------- | ----------- |
-| user  | user | unique: true, foreign_key: true|
-| item  | item | unique: true, foreign_key: true|
+| user  | user | foreign_key: true|
+| item  | item | foreign_key: true|
 
 
 
@@ -89,11 +89,11 @@ Things you may want to cover:
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| purchase_history   | string  | purchases, foreign_key: true |
+| purchases_history  | string  | foreign_key: true |
 | post_code          | string  | null: false |
-| prefecture_id     | integer |
-| municipalities     | string  |
-| address            | string  |
+| prefecture_id      | integer | null: false |
+| municipalities     | string  | null: false |
+| address            | string  | null: false |
 | building_name      | string  |
 | telephone_number   | string  | null: false |
 
