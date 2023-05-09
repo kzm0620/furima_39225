@@ -36,7 +36,7 @@ Things you may want to cover:
 | last_name          | string   | null: false  |
 | first_name_kana    | string   | null: false  |
 | last_name_kana     | string   | null: false  |
-| date               | datetime | null: false  |
+| date               | date     | null: false  |
 
 
 ### Association
@@ -45,7 +45,7 @@ Things you may want to cover:
 
 
 
-## items テーブル (商品情報)
+## item テーブル (商品情報)
 
 | Column                 | Type      | Options     |
 | ---------------------- | --------- | ----------- |
@@ -63,8 +63,8 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :users 
-- has_one  :purchase
+- belongs_to :users 
+- has_one    :purchase
 
 
 
@@ -72,8 +72,8 @@ Things you may want to cover:
 
 | Column             | Type      | Options     |
 | ------------------ | --------- | ----------- |
-| item_information   | reference | unique: true, user, foreign_key: true|
-
+| user  | user | unique: true, foreign_key: true|
+| item  | item | unique: true, foreign_key: true|
 
 
 
@@ -91,7 +91,7 @@ Things you may want to cover:
 | ------------------ | ------- | ----------- |
 | purchase_history   | string  | purchases, foreign_key: true |
 | post_code          | string  | null: false |
-| prefectures_id     | integer |
+| prefecture_id     | integer |
 | municipalities     | string  |
 | address            | string  |
 | building_name      | string  |
