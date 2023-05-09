@@ -36,7 +36,7 @@ Things you may want to cover:
 | last_name          | string   | null: false  |
 | first_name_kana    | string   | null: false  |
 | last_name_kana     | string   | null: false  |
-| date               | date     | null: false  |
+| birth_date               | date     | null: false  |
 
 
 ### Association
@@ -47,17 +47,18 @@ Things you may want to cover:
 
 ## item テーブル (商品情報)
 
-| Column                    | Type      | Options     |
-| ------------------------- | --------- | ----------- |
-| user                      | reference | null: false, foreign_key: true|
-| category_id               | integer   | null: false |
-| item_name                 | string    | null: false |
-| item_explanation          | text      | null: false |
-| item_situation_id         | integer   | null: false |
-| item_price                | integer   | null: false |
-| shipping_charges_id       | integer   | null: false |
-| shipping_origin_id        | integer   | null: false |
-| days_to_delivery_id       | integer   | null: false |
+| Column                    | Type       | Options     |
+| ------------------------- | ---------- | ----------- |
+| user                      | references | null: false, foreign_key: true|
+| category_id               | integer    | null: false |
+| item_name                 | string     | null: false |
+| item_explanation          | text       | null: false |
+| item_situation_id         | integer    | null: false |
+| item_price                | integer    | null: false |
+| shipping_charge_id        | integer    | null: false |
+| shipping_origin_id        | integer    | null: false |
+| days_to_delivery_id       | integer    | null: false |
+| prefecture_id             | integer    | null: false |
 
 
 
@@ -72,8 +73,8 @@ Things you may want to cover:
 
 | Column             | Type      | Options     |
 | ------------------ | --------- | ----------- |
-| user  | user | foreign_key: true|
-| item  | item | foreign_key: true|
+| user  | references | null: false, foreign_key: true|
+| item  | references | null: false, foreign_key: true|
 
 
 
@@ -85,11 +86,11 @@ Things you may want to cover:
 
 
 
-## sends テーブル (発送先情報)
+## send_shippings テーブル (発送先情報)
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| purchases_history  | string  | foreign_key: true |
+| purchases          | string  | null: false, foreign_key: true |
 | post_code          | string  | null: false |
 | prefecture_id      | integer | null: false |
 | municipalities     | string  | null: false |
