@@ -45,7 +45,7 @@ Things you may want to cover:
 
 
 
-## item テーブル (商品情報)
+## items テーブル (商品情報)
 
 | Column                    | Type       | Options     |
 | ------------------------- | ---------- | ----------- |
@@ -56,7 +56,6 @@ Things you may want to cover:
 | item_situation_id         | integer    | null: false |
 | item_price                | integer    | null: false |
 | shipping_charge_id        | integer    | null: false |
-| shipping_origin_id        | integer    | null: false |
 | days_to_delivery_id       | integer    | null: false |
 | prefecture_id             | integer    | null: false |
 
@@ -82,7 +81,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one   :send
+- has_one   :send_shippings
 
 
 
