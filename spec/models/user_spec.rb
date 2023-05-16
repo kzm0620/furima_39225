@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
 
     context '新規登録できるとき' do
       
-      it 'n全ての値が問題なく入っている場合、登録ができる' do
+      it '全ての値が問題なく入っている場合、登録ができる' do
         expect(@user).to be_valid
       end
 
