@@ -32,13 +32,13 @@ RSpec.describe Item, type: :model do
 
 
       it '商品名がないと保存できない' do
-        @item.item_name = '1'
+        @item.item_name = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Item name can't be blank"
       end
 
       it '商品説明がないと保存できない' do
-        @item.item_explanation = '1'
+        @item.item_explanation = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Item explanation can't be blank"
       end
@@ -77,7 +77,7 @@ RSpec.describe Item, type: :model do
       it '価格の情報がないと保存できない' do
         @item.item_price = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item price can't be blank"
+        expect(@item.errors.full_messages).to include "Item price must be greater than or equal to 300"
       end
 
 
@@ -105,7 +105,9 @@ RSpec.describe Item, type: :model do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "User must exist"
-       end
+      end
+
+    end  
 
   end
 
