@@ -14,6 +14,11 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
 
+      it '価格は半角数値のみ保存可能であること' do
+        @item.item_price =  '1000'
+        expect(@item).to be_valid
+      end
+
     end  
 
 
@@ -90,15 +95,48 @@ RSpec.describe Item, type: :model do
 
 
 
-      it '価格は半角数値のみ保存可能であること' do
-        @item = FactoryBot.build(:item, item_price: '1000')
-        expect(@item).to be_valid
+      it '価格は半角数値でないと保存できない' do
+        @item.item_price = 'aaaaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Item price is not a number"
       end
 
-      
-    
-    end
+      it 'userが紐づいていなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "User must exist"
+       end
 
+       it 'カテゴリーに「---」が選択されている場合は出品できない' do
+        @item.category_id = '---'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category can't be blank"
+       end
+
+       it '商品の状態に「---」が選択されている場合は出品できない' do
+        @item.item_situation_id = '---'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Item situation can't be blank"
+       end
+
+       it '配送料の負担に「---」が選択されている場合は出品できない' do
+        @item.shipping_charge_id = '---'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Shipping charge can't be blank"
+       end
+
+       it '発送元の地域に「---」が選択されている場合は出品できない' do
+        @item.prefecture_id = '---'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Prefecture can't be blank"
+       end
+
+       it '発送までの日数に「---」が選択されている場合は出品できない' do
+        @item.days_to_delivery_id = '---'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Days to delivery can't be blank"
+       end
+  end
   end
 
 end
