@@ -11,7 +11,7 @@ FactoryBot.define do
     prefecture_id        {47}
     
     after(:build) do |item|
-      item.item_image.attach(io: File.open('public/images/item-sample.png'), filename: 'item-sample.png')
+      item.image.attach(io: File.open('public/images/item-sample.png'), filename: 'item-sample.png')
     end
     
   end
