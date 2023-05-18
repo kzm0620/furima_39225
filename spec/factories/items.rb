@@ -7,7 +7,7 @@ FactoryBot.define do
     item_situation_id    {2}
     item_price           {10000}
     shipping_charge_id   {3}
-    days_to_delivery_id  {2}
+    delivery_id          {2}
     prefecture_id        {47}
     
     after(:build) do |item|
