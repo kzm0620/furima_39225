@@ -11,11 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-<<<<<<< Updated upstream
-   
-=======
-  
->>>>>>> Stashed changes
-  end
 
+  end
+  
 end

@@ -69,7 +69,7 @@ RSpec.describe Item, type: :model do
     
 
       it '発送までの日数の情報がないと保存できない' do
-        @item.days_to_delivery_id = '1'
+        @item.delivery_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include "Days to delivery can't be blank"
       end

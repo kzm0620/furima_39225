@@ -56,7 +56,7 @@ Things you may want to cover:
 | item_situation_id         | integer    | null: false |
 | item_price                | integer    | null: false |
 | shipping_charge_id        | integer    | null: false |
-| days_to_delivery_id       | integer    | null: false |
+| delivery_id               | integer    | null: false |
 | prefecture_id             | integer    | null: false |
 
 
