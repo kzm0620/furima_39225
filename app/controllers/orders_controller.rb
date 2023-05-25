@@ -48,7 +48,6 @@ class OrdersController < ApplicationController
 
 
   def  order_purchase
-    @item = Item.find(params[:item_id])
      if @item.purchase
       redirect_to root_path
      end
