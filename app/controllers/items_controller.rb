@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!,  except: [:index, :show]
   before_action :set_item,            only:   [:edit, :update, :show, :destroy] 
   before_action :move_to_index,       except: [:index, :show]
-
+  before_action :item_purchase,       only:   [:edit, :show]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -63,6 +63,13 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to new_user_session_path unless user_signed_in?
   end
+
+  def  item_purchase
+    @item = Item.find(params[:id])
+     if @item.purchase
+      redirect_to root_path
+     end
+   end
 
 end
 

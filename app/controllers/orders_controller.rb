@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_user!,  except: [:index, :create]
+  before_action :authenticate_user!,  except: [:index, :create, :show]
+  before_action :order_purchase,        only: [:index]
+
 
   def index
     @order = Order.new
@@ -37,5 +39,12 @@ class OrdersController < ApplicationController
       currency: 'jpy'                        # 通貨の種類（日本円）
     )
   end
+
+  def  order_purchase
+    @item = Item.find(params[:item_id])
+     if @item.purchase
+      redirect_to root_path
+     end
+   end
 
 end
