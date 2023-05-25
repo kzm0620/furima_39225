@@ -27,7 +27,7 @@ RSpec.describe Order, type: :model do
 
  
       it '郵便番号がないと購入できない' do
-        @order.post_code = '0'
+        @order.post_code = ''
         @order.valid?
         expect(@order.errors.full_messages).to include "Post code is invalid. Include hyphen(-)"
       end
@@ -39,7 +39,7 @@ RSpec.describe Order, type: :model do
       end
 
       it '都道府県がないと購入できない' do
-        @order.prefecture_id = ''
+        @order.prefecture_id = '0'
         @order.valid?
         expect(@order.errors.full_messages).to include "Prefecture can't be blank"
       end
@@ -62,7 +62,13 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include "Telephone number can't be blank"
       end
 
-      it '電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと' do
+      it '電話番号は、10桁以上の半角数値のみ保存可能なこと' do
+        @order.telephone_number = '123456789'
+        @order.valid?
+        expect(@order.errors.full_messages).to include "Telephone number 10桁以上11桁以内の半角数値のみ保存可能なこと"
+      end
+
+      it '電話番号は、11桁以内の半角数値のみ保存可能なこと' do
         @order.telephone_number = '123456789123'
         @order.valid?
         expect(@order.errors.full_messages).to include "Telephone number 10桁以上11桁以内の半角数値のみ保存可能なこと"
@@ -74,6 +80,23 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Token can't be blank")
       end
 
+      it "電話番号は、数字以外は保存できないこと" do
+        @order.telephone_number = 'aaaaaaaa'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Telephone number 10桁以上11桁以内の半角数値のみ保存可能なこと")
+      end
+
+      it "ユーザーが紐づいていなければ保存できないこと" do
+        @order.user_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it "商品が紐づいていなければ保存できないこと" do
+        @order.item_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
+      end
     end
 
   end 
