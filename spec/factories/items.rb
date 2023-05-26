@@ -4,7 +4,7 @@ FactoryBot.define do
     category_id          {4}
     item_name            {"test"}
     item_explanation     {"test"}
-    item_situation_id    {2}
+    situation_id         {2}
     item_price           {10000}
     shipping_charge_id   {3}
     delivery_id          {2}

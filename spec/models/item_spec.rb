@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品の状態の情報がないと保存できない' do
-        @item.item_situation_id = '1'
+        @item.situation_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include "Item situation can't be blank"
       end
