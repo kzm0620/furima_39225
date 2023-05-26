@@ -52,7 +52,7 @@ RSpec.describe Item, type: :model do
       it '商品の状態の情報がないと保存できない' do
         @item.situation_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item situation can't be blank"
+        expect(@item.errors.full_messages).to include "Situation can't be blank"
       end
 
       it '配送料の負担の情報がないと保存できない' do
@@ -71,7 +71,7 @@ RSpec.describe Item, type: :model do
       it '発送までの日数の情報がないと保存できない' do
         @item.delivery_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Days to delivery can't be blank"
+        expect(@item.errors.full_messages).to include "Delivery can't be blank"
       end
 
       it '価格の情報がないと保存できない' do
