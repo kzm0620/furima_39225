@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!,  except: [:index, :show]
   before_action :set_item,            only:   [:edit, :update, :show, :destroy] 
   before_action :item_purchase,       only:   [:edit]
+  
 
   def index
     @items = Item.order(created_at: :desc)
@@ -27,7 +28,9 @@ class ItemsController < ApplicationController
   
 
   def edit
-    redirect_to root_path unless current_user.id == @item.user_id
+    if @item.user_id = current_user.id
+      redirect_to root_path
+    end
   end
 
 
@@ -62,11 +65,13 @@ class ItemsController < ApplicationController
 
 
   def  item_purchase
-     if @item.purchase
+     if @item.purchase != nil
       redirect_to root_path
      end
-     render "new"
    end
+
+
+   
 
 end
 
