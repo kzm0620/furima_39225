@@ -29,73 +29,73 @@ RSpec.describe Order, type: :model do
       it '郵便番号がないと購入できない' do
         @order.post_code = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include "Post code is invalid. Include hyphen(-)"
+        expect(@order.errors.full_messages).to include "郵便番号を入力してください"
       end
 
       it '郵便番号は、「3桁ハイフン4桁」の半角文字列でないと保存できない' do
         @order.post_code = '1234567'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Post code is invalid. Include hyphen(-)"
+        expect(@order.errors.full_messages).to include "郵便番号はハイフン(-)を含むこと"
       end
 
       it '都道府県がないと購入できない' do
-        @order.prefecture_id = '0'
+        @order.prefecture_id = '1'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Prefecture can't be blank"
+        expect(@order.errors.full_messages).to include "都道府県は必須である"
       end
 
       it '市区町村がないと購入できない' do
         @order.municipalities = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include "Municipalities can't be blank"
+        expect(@order.errors.full_messages).to include "市区町村を入力してください"
       end
 
       it '番地がないと購入できない' do
         @order.address = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include "Address can't be blank"
+        expect(@order.errors.full_messages).to include "番地を入力してください"
       end
 
       it '電話番号がないと購入できない' do
         @order.telephone_number = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include "Telephone number can't be blank"
+        expect(@order.errors.full_messages).to include "電話番号を入力してください"
       end
 
       it '電話番号は、10桁以上の半角数値のみ保存可能なこと' do
         @order.telephone_number = '123456789'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Telephone number 10桁以上11桁以内の半角数値のみ保存可能なこと"
+        expect(@order.errors.full_messages).to include "電話番号は10桁以上11桁以内の半角数値のみ保存可能なこと"
       end
 
       it '電話番号は、11桁以内の半角数値のみ保存可能なこと' do
         @order.telephone_number = '123456789123'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Telephone number 10桁以上11桁以内の半角数値のみ保存可能なこと"
+        expect(@order.errors.full_messages).to include "電話番号は10桁以上11桁以内の半角数値のみ保存可能なこと"
       end
 
-      it "tokenが空では登録できないこと" do
+      it "トークンが空では登録できないこと" do
         @order.token =''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Token can't be blank")
+        expect(@order.errors.full_messages).to include("トークンを入力してください")
       end
 
       it "電話番号は、数字以外は保存できないこと" do
         @order.telephone_number = 'aaaaaaaa'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Telephone number 10桁以上11桁以内の半角数値のみ保存可能なこと")
+        expect(@order.errors.full_messages).to include("電話番号は10桁以上11桁以内の半角数値のみ保存可能なこと")
       end
 
       it "ユーザーが紐づいていなければ保存できないこと" do
         @order.user_id = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("User can't be blank")
+        expect(@order.errors.full_messages).to include("ユーザーを入力してください")
       end
 
       it "商品が紐づいていなければ保存できないこと" do
         @order.item_id = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("Item can't be blank")
+        expect(@order.errors.full_messages).to include("商品を入力してください")
       end
     end
 

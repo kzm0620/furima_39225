@@ -5,16 +5,16 @@ class Order
 
 
   with_options presence: true do
-    validates   :user_id            
+    validates   :user_id
     validates   :item_id
-    validates   :post_code,          format:   {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates   :post_code,          format:   {with: /\A\d{3}[-]\d{4}\z/, message: "はハイフン(-)を含むこと"}
     validates   :municipalities
     validates   :address
-    validates   :telephone_number,   format:   {with: /\A\d{10,11}\z/, message: "10桁以上11桁以内の半角数値のみ保存可能なこと"}
+    validates   :telephone_number,   format:   {with: /\A\d{10,11}\z/, message: "は10桁以上11桁以内の半角数値のみ保存可能なこと"}
     validates   :token
   end
 
-    validates   :prefecture_id,      numericality:  {other_than: 1, message: "can't be blank"}
+    validates   :prefecture_id,      numericality:  {other_than: 1, message: "は必須である"}
 
   
   
